@@ -3,6 +3,7 @@ from .base_page import BasePage
 from .locators import ProductPageLocators
 import time
 import math
+from selenium.common.exceptions import NoAlertPresentException
 
 class ProductPage(BasePage):
     def should_add_product_page(self):
@@ -28,7 +29,7 @@ class ProductPage(BasePage):
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
-        time.sleep(1)
+
 
     def should_check_name_product_to_basket(self):
         product_text_elt = self.browser.find_element(*ProductPageLocators.NAME_PRODUCT)
